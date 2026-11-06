@@ -40,8 +40,11 @@ declare -A MAP=(
     [cross_spectacle]="crosshair 0.5 0.5 cross,tcross,cross_reverse"
     [resize_horizontal]="ew-resize 0.5 0.5 size_hor,sb_h_double_arrow,h_double_arrow"
     [resize_vertical]="ns-resize 0.5 0.5 size_ver,sb_v_double_arrow,v_double_arrow"
-    [resize_diagonal_left]="nesw-resize 0.5 0.5 fd_double_arrow"
-    [resize_diagonal_right]="nwse-resize 0.5 0.5 bd_double_arrow"
+    # En el rediseño de octubre «left» apunta de arriba-izquierda a
+    # abajo-derecha (\) y «right» al revés (/): los nombres del Figma se
+    # quedaron, la inclinación cambió.
+    [resize_diagonal_left]="nwse-resize 0.5 0.5 bd_double_arrow,size_fdiag"
+    [resize_diagonal_right]="nesw-resize 0.5 0.5 fd_double_arrow,size_bdiag"
     [col_resize_horizontal]="col-resize 0.5 0.5 "
     [col_resize_vertical]="row-resize 0.5 0.5 "
     [magnifying_glass_zoom_in]="zoom-in 0.467 0.286 "

@@ -56,10 +56,14 @@ for VARIANT in "${VARIANTS[@]}"; do
 
     DEST="$DEST_BASE/BookOS-$VARIANT"
     echo "==> Installing to $DEST"
-    rm -rf "$DEST"
+    # Solo se reemplaza `cursors/`: el pack de iconos se instala en este mismo
+    # directorio (comparten nombre de tema) y borrarlo entero se llevaba los
+    # iconos. Su `index.theme` manda si ya está, porque es el que trae
+    # `Directories=`; el nuestro solo hace falta cuando no hay iconos.
+    rm -rf "$DEST/cursors"
     mkdir -p "$DEST/cursors"
     cp -r "$ROOT/build/$VARIANT/cursors/." "$DEST/cursors/"
-    cp "$ROOT/build/$VARIANT/index.theme" "$DEST/index.theme"
+    [ -f "$DEST/index.theme" ] || cp "$ROOT/build/$VARIANT/index.theme" "$DEST/index.theme"
 
     echo "==> $VARIANT theme installed at $DEST"
 done
