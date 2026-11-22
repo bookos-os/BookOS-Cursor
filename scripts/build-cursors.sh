@@ -15,7 +15,10 @@ SRC="$ROOT/$VARIANT"
 CFG="$ROOT/build/config"
 OUT="$ROOT/build/$VARIANT/cursors"
 
-SIZES=(24 32 48 64)
+# Hasta 192: el compositor pide «cursor × escala de la pantalla» píxeles y elige
+# el más cercano. Con el cursor al máximo (64) a escala 2 son 128; si el tema
+# solo llegaba a 64 se estiraba ×2 y salía borroso.
+SIZES=(24 32 48 64 96 128 192)
 
 command -v rsvg-convert >/dev/null || { echo "Falta rsvg-convert" >&2; exit 1; }
 command -v xcursorgen >/dev/null || { echo "Falta xcursorgen (sudo pacman -S xorg-xcursorgen)" >&2; exit 1; }
